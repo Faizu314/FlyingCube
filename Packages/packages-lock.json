@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.phezu.util": {
+      "version": "https://github.com/Faizu314/Phezu.git?path=/Assets/com.phezu.util",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8fc097b6cbd662081157d74a51502fb9d0b62a5b"
+    },
     "com.unity.burst": {
       "version": "1.8.2",
       "depth": 1,
