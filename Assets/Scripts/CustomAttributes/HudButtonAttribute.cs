@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HudButtonAttribute : PropertyAttribute {
+namespace Phezu.Derek {
+
+    public class HudButtonAttribute : PropertyAttribute {
+
+    }
 
 }

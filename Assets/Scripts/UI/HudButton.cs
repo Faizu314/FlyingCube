@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HudButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+namespace Phezu.Derek.UI {
 
-    [HudButton] public int m_ButtonType;
+    public class HudButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-    private InputManager m_InputManager;
+        [HudButton] public int m_ButtonType;
 
-    private void Start() {
-        m_InputManager = InputManager.Instance;
-    }
+        private InputManager m_InputManager;
 
-    public void OnPointerDown(PointerEventData eventData) {
-        m_InputManager.SetHudButton(m_ButtonType, true);
-    }
+        private void Start() {
+            m_InputManager = InputManager.Instance;
+        }
 
-    public void OnPointerUp(PointerEventData eventData) {
-        m_InputManager.SetHudButton(m_ButtonType, false);
+        public void OnPointerDown(PointerEventData eventData) {
+            m_InputManager.SetHudButton(m_ButtonType, true);
+        }
+
+        public void OnPointerUp(PointerEventData eventData) {
+            m_InputManager.SetHudButton(m_ButtonType, false);
+        }
     }
 }
