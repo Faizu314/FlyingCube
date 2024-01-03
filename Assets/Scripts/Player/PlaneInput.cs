@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Phezu.Derek {
 
-    public class PlayerInput : MonoBehaviour {
+    public class PlaneInput : MonoBehaviour {
 
         private Vector2 m_InputCommand;
 

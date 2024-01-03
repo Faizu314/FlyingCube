@@ -367,6 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6620579197992808363}
+  - component: {fileID: 8584633457679825999}
   - component: {fileID: 2866570521621900748}
   - component: {fileID: 3414180961230792000}
   m_Layer: 0
@@ -393,6 +394,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8584633457679825999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620579197992808360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65054730b2eeafd4887ff0a2c5be0ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlaneInput: {fileID: 2866570521621900748}
+  m_PlaneMotor: {fileID: 3414180961230792000}
+  m_RollingSpeed: 25
+  m_PitchingSpeed: 25
+  m_TurningSpeed: 40
+  m_MovementSpeed: 8
 --- !u!114 &2866570521621900748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,10 +438,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TurnTransform: {fileID: 3002121463287170013}
   m_PitchRollTransform: {fileID: 7192960868422353910}
-  m_Speed: 0
-  m_Pitch: 0
-  m_Roll: 0
-  m_Turn: 0
+  Speed: 8
+  Pitch: 8.337519e-11
+  Roll: 0.00000012579
+  Turn: -317.50833
+  m_MaxPitchInDegrees: 41
+  m_MaxRollInDegrees: 9.1
 --- !u!1 &6620579198179697519
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,8 +468,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6620579198179697519}
-  m_LocalRotation: {x: 0.6501388, y: -0, z: -0, w: 0.75981545}
-  m_LocalPosition: {x: 0, y: 11.5, z: -1.8000002}
+  m_LocalRotation: {x: 0.4868928, y: -0, z: -0, w: 0.8734618}
+  m_LocalPosition: {x: 0, y: 11.5, z: -7.1100006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -475,7 +496,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 6620579197992808363}
-  m_Follow: {fileID: 6620579197992808363}
+  m_Follow: {fileID: 3002121463287170013}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -650,7 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 11.5, z: -1.8}
+  m_FollowOffset: {x: 0, y: 11.5, z: -7.11}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
