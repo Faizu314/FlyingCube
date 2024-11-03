@@ -50,7 +50,7 @@ namespace Phezu.Derek {
 
         private void SkipFade() {
             if (m_FadeCo != null) {
-                StopCoroutine(m_FadeCo);
+                StopAllCoroutines();
                 m_FadeCo = null;
             }
 
@@ -77,7 +77,7 @@ namespace Phezu.Derek {
 
             float t = 0f;
 
-            while (t < m_FadeInDuration) {   
+            while (t < m_FadeInDuration) {
                 func.Invoke(0f, m_FadeInDuration, t);
                 t += Time.deltaTime;
 
@@ -96,7 +96,7 @@ namespace Phezu.Derek {
 
             float t = 0f;
 
-            while (t > m_FadeOutDuration) {
+            while (t < m_FadeOutDuration) {
                 func.Invoke(0f, m_FadeOutDuration, t);
                 t += Time.deltaTime;
 

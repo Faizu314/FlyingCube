@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -356.34, y: -110.94}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8241238569166302879
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_DialogueText: {fileID: 3701083926216950786}
   m_DialogueContainer: {fileID: 3293013455733743255}
   m_DontFade: 0
-  m_FadeOutDuration: 0.5
+  m_FadeOutDuration: 0.2
   m_FadeOutEase: 21
-  m_FadeInDuration: 0.5
+  m_FadeInDuration: 0.2
   m_FadeInEase: 21
 --- !u!1 &6411625900540433930
 GameObject:
@@ -284,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 441, y: -134}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6465558629661069866
