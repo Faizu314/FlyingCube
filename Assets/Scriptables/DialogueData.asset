@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d73b2cbcb2b7748b99908e0f265866, type: 3}
+  m_Name: DialogueData
+  m_EditorClassIdentifier: 
+  Background: {fileID: 0}
+  LeftCharacter: {fileID: 21300000, guid: 215739b74fc22684a8a003b6811dbde2, type: 3}
+  RightCharacter: {fileID: 21300000, guid: 323c8494835538c4bb4fea5d1c4bd67c, type: 3}
+  Dialogues:
+  - Type: 1
+    Text: I am the Left Character. This is some sample text
+  - Type: 1
+    Text: Left character saying something again
+  - Type: 2
+    Text: Here is a rebuttal by the character on the right.
