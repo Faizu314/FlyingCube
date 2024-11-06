@@ -9,10 +9,11 @@ namespace Phezu.Derek {
         public enum CharacterType { None = 0, Left, Right };
 
         [Serializable]
-        public struct DialogueText {
+        public struct Dialogue {
             public CharacterType Type;
             [TextArea]
             public string Text;
+            public AudioClip VoiceOver;
         }
 
         [Header("Sprites")]
@@ -21,6 +22,6 @@ namespace Phezu.Derek {
         public Sprite RightCharacter;
 
         [Space]
-        public DialogueText[] Dialogues;
+        public Dialogue[] Dialogues;
     }
 }
