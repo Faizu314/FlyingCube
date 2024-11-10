@@ -281,7 +281,7 @@ MonoBehaviour:
   m_MinLandingMotorPitch: -0.8
   m_PitchingSpeed: 25
   m_MovementSpeed: 8
-  m_LandedDecceleration: 0
+  m_LandedDecceleration: 2
   OnLanded:
     m_PersistentCalls:
       m_Calls:

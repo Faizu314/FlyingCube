@@ -29,9 +29,6 @@ namespace Phezu.Derek {
         public UnityEvent OnCrashed;
 
         private void Update() {
-            if (m_HasCrashed)
-                return;
-
             ApplyInput();
 
             if (m_IsLanding) {
@@ -65,6 +62,8 @@ namespace Phezu.Derek {
         private void LandingTick() {
             m_CurrPitch = EasingFunction.EaseInSine(m_CurrPitch, 0f, Time.deltaTime * m_PitchingSpeed);
             m_MovementSpeed -= m_LandedDecceleration * Time.deltaTime;
+            if (m_MovementSpeed < 0f)
+                m_MovementSpeed = 0f;
 
             var pos = m_PlaneMotor.transform.position;
             pos.y = m_HeightAtCollision;
@@ -74,13 +73,13 @@ namespace Phezu.Derek {
         private void OnGroundHit() {
             if (m_CurrPitch <= m_MinLandingMotorPitch) {
                 OnCrashed?.Invoke();
-                m_HasCrashed = true;
             }
             else {
                 OnLanded?.Invoke();
-                m_IsLanding = true;
-                m_HeightAtCollision = m_PlaneMotor.transform.position.y;
             }
+
+            m_IsLanding = true;
+            m_HeightAtCollision = m_PlaneMotor.transform.position.y;
         }
     }
 }
