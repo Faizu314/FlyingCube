@@ -1802,6 +1802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102218077}
   - component: {fileID: 2102218076}
+  - component: {fileID: 2102218078}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1841,6 +1842,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102218078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102218075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed1d4ead2609304987f6f1f223dbf40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4766485611564659374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1855,14 +1868,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520991254949509440, guid: 6e35cb0eab8a8ef45add659276e5041e,
         type: 3}
-      propertyPath: m_MaxLandingMotorPitch
-      value: -0.907
-      objectReference: {fileID: 0}
+      propertyPath: OnLanded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2102218078}
     - target: {fileID: 4520991254949509440, guid: 6e35cb0eab8a8ef45add659276e5041e,
         type: 3}
-      propertyPath: m_MinLandingMotorPitch
-      value: -1
-      objectReference: {fileID: 0}
+      propertyPath: OnCrashed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2102218078}
     - target: {fileID: 4672468946948852020, guid: 6e35cb0eab8a8ef45add659276e5041e,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Phezu.Derek {
 
@@ -22,8 +23,15 @@ namespace Phezu.Derek {
 
         private float m_HeightAtCollision;
         private bool m_IsLanding = false;
+        private bool m_HasCrashed = false;
+
+        public UnityEvent OnLanded;
+        public UnityEvent OnCrashed;
 
         private void Update() {
+            if (m_HasCrashed)
+                return;
+
             ApplyInput();
 
             if (m_IsLanding) {
@@ -65,11 +73,11 @@ namespace Phezu.Derek {
 
         private void OnGroundHit() {
             if (m_CurrPitch <= m_MinLandingMotorPitch) {
-                Debug.Log("Crashed");
-                return;
+                OnCrashed?.Invoke();
+                m_HasCrashed = true;
             }
             else {
-                Debug.Log("Landed Succesfully");
+                OnLanded?.Invoke();
                 m_IsLanding = true;
                 m_HeightAtCollision = m_PlaneMotor.transform.position.y;
             }
