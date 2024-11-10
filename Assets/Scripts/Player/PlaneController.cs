@@ -53,7 +53,5 @@ namespace Phezu.Derek {
             m_PlaneMotor.Turn = m_CurrTurn;
             m_PlaneMotor.Speed = m_MovementSpeed;
         }
-
-
     }
 }
