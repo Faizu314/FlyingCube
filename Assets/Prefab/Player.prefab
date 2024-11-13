@@ -556,8 +556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlaneInput: {fileID: 7651937688512137134}
   m_PlaneMotor: {fileID: 4002097848800140867}
-  m_RollingSpeed: 25
-  m_PitchingSpeed: 25
+  m_RollingSpeed: 3
+  m_PitchingSpeed: 3
   m_TurningSpeed: 40
   m_MovementSpeed: 8
 --- !u!114 &7651937688512137134

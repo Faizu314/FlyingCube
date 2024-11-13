@@ -51,7 +51,7 @@ namespace Phezu.Derek {
             else
                 m_TargetPitch = 0f;
 
-            m_CurrPitch = EasingFunction.EaseInSine(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
+            m_CurrPitch = Mathf.Lerp(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
         }
 
         private void ApplyInput() {

@@ -44,8 +44,8 @@ namespace Phezu.Derek {
             else
                 m_TargetPitch = 0f;
 
-            m_CurrRoll = EasingFunction.EaseInSine(m_CurrRoll, m_TargetRoll, Time.deltaTime * m_RollingSpeed);
-            m_CurrPitch = EasingFunction.EaseInSine(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
+            m_CurrRoll = Mathf.Lerp(m_CurrRoll, m_TargetRoll, Time.deltaTime * m_RollingSpeed);
+            m_CurrPitch = Mathf.Lerp(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
             m_CurrTurn += input.x * Time.deltaTime * m_TurningSpeed;
 
             m_PlaneMotor.Pitch = m_CurrPitch;

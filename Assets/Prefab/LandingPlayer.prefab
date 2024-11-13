@@ -279,7 +279,7 @@ MonoBehaviour:
   m_PlaneBottom: {fileID: 3488516933707786129}
   m_GroundY: 0.5
   m_MinLandingMotorPitch: -0.8
-  m_PitchingSpeed: 25
+  m_PitchingSpeed: 3
   m_MovementSpeed: 8
   m_LandedDecceleration: 2
   OnLanded:
