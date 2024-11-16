@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723149094788537}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 4520991254949509440}
   - component: {fileID: 4849339049227552933}
   - component: {fileID: 8789350791196279457}
+  - component: {fileID: 2209244263791732487}
   m_Layer: 0
   m_Name: LandingPlayer
   m_TagString: Untagged
@@ -274,8 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a3012c363f5254a861d5b372a4f64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 2209244263791732487}
   m_PlaneInput: {fileID: 4849339049227552933}
   m_PlaneMotor: {fileID: 8789350791196279457}
+  m_CustomForward: {fileID: 5799046668275603975}
   m_PlaneBottom: {fileID: 3488516933707786129}
   m_StartPosition: {x: 27.3, y: 12.68, z: -12.5}
   m_TotalWidth: 200
@@ -283,9 +286,12 @@ MonoBehaviour:
   m_MinLandingMotorPitch: -0.8
   m_PitchingSpeed: 3
   m_MovementSpeed: 8
+  m_UpWeightWhileTurning: 0.2
   m_LandedDecceleration: 2
   m_SceneAfterLanding: DialogueScene
+  m_SceneAfterCrashing: DialogueScene
   m_SceneAfterExiting: FlyingScene
+  ComponentSpeed: {x: 0, y: 1, z: 1}
   OnLanded:
     m_PersistentCalls:
       m_Calls:
@@ -340,14 +346,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665e446318acf56459ceeb8d655fc1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ForwardTransform: {fileID: 195636688671816863}
   m_TurnTransform: {fileID: 7749666882582809135}
   m_PitchRollTransform: {fileID: 2447550971293878788}
   Speed: 8
+  ComponentNormalizedSpeed: {x: 1, y: 1, z: 1}
   Pitch: 0
   Roll: 0
   Turn: 0
   m_MaxPitchInDegrees: 41
-  m_MaxRollInDegrees: 9.1
+  m_MaxRollInDegrees: 46.2
+--- !u!95 &2209244263791732487
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513602976797444301}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: face7bceb7764324fa20354830a692bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1856873776339386630
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +486,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7749666882582809135}
+  - {fileID: 195636688671816863}
   m_Father: {fileID: 4672468946948852020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -512,7 +542,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1856873777414563417}
-  m_Follow: {fileID: 7749666882582809135}
+  m_Follow: {fileID: 1856873777414563417}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -757,6 +787,52 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &5345819610546376676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195636688671816863}
+  - component: {fileID: 5799046668275603975}
+  m_Layer: 0
+  m_Name: CustomForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &195636688671816863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345819610546376676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1856873777414563417}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5799046668275603975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345819610546376676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3a9559f7910a243ba0c0d90b27f1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PitchTransform: {fileID: 2447550971293878788}
+  UpWeight: 1
 --- !u!1 &5670844862501911638
 GameObject:
   m_ObjectHideFlags: 0

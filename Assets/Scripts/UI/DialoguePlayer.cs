@@ -13,7 +13,6 @@ namespace Phezu.Derek {
 
         [Space]
         [Header("Configuration")]
-        [SerializeField] private bool m_DontFade = false;
         [SerializeField] private float m_FadeOutDuration = 0.5f;
         [SerializeField] private EasingFunction.Ease m_FadeOutEase = EasingFunction.Ease.Linear;
         [SerializeField] private float m_FadeInDuration = 0.5f;

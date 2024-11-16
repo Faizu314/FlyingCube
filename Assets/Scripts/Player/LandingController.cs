@@ -7,8 +7,10 @@ namespace Phezu.Derek {
     public class LandingController : MonoBehaviour {
 
         [Header("References")]
+        [SerializeField] private Animator m_Animator;
         [SerializeField] private PlaneInput m_PlaneInput;
         [SerializeField] private PlaneMotor m_PlaneMotor;
+        [SerializeField] private LandingPlaneForward m_CustomForward;
         [Tooltip("Minimum Y value of the plane model. Will be compared with GroundY to check for collision.")]
         [SerializeField] private Transform m_PlaneBottom;
 
@@ -20,9 +22,13 @@ namespace Phezu.Derek {
         [SerializeField] [Range(-1f, 0f)] private float m_MinLandingMotorPitch;
         [SerializeField] private float m_PitchingSpeed;
         [SerializeField] private float m_MovementSpeed;
+        [SerializeField] [Range(0f, 1f)] private float m_UpWeightWhileTurning = 0.2f;
         [SerializeField] private float m_LandedDecceleration;
         [SerializeField] [SceneField] private string m_SceneAfterLanding;
-        [SerializeField][SceneField] private string m_SceneAfterExiting;
+        [SerializeField] [SceneField] private string m_SceneAfterCrashing;
+        [SerializeField] [SceneField] private string m_SceneAfterExiting;
+
+        public Vector3 ComponentSpeed = Vector3.one;
 
         private float m_TargetPitch;
         private float m_CurrPitch;
@@ -31,6 +37,7 @@ namespace Phezu.Derek {
         private bool m_IsLanding = false;
         private bool m_HasCrashed = false;
         private bool m_HasExited = false;
+        private bool m_IsTurning = false;
 
         public UnityEvent OnLanded;
         public UnityEvent OnCrashed;
@@ -38,6 +45,11 @@ namespace Phezu.Derek {
         private void Update() {
             if (m_HasExited)
                 return;
+
+            if (m_IsTurning) {
+                m_PlaneMotor.ComponentNormalizedSpeed = ComponentSpeed;
+                return;
+            }
 
             ApplyInput();
             CheckExit();
@@ -54,6 +66,11 @@ namespace Phezu.Derek {
             }
         }
 
+        public void OnTurnAnimationComplete() {
+            m_IsTurning = false;
+            m_CustomForward.UpWeight = 1f;
+        }
+
         private void ProcessInput() {
             Vector2 input = m_PlaneInput.InputCommand;
 
@@ -63,11 +80,24 @@ namespace Phezu.Derek {
                 m_TargetPitch = 0f;
 
             m_CurrPitch = Mathf.Lerp(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
+            m_Animator.enabled = m_IsTurning = input.x != 0;
+
+            if (input.x < 0 && Mathf.Abs(m_PlaneMotor.Turn) % 360f < 1f) {
+                m_Animator.Play("PlaneTurnLeft");
+            }
+            else if (input.x > 0 && Mathf.Abs(m_PlaneMotor.Turn - 180f) % 360f < 1f) {
+                m_Animator.Play("PlaneTurnRight");
+            }
+            else
+                m_Animator.enabled = m_IsTurning = false;
+
+            m_CustomForward.UpWeight = m_IsTurning ? m_UpWeightWhileTurning : 1f;
         }
 
         private void ApplyInput() {
             m_PlaneMotor.Pitch = m_CurrPitch;
             m_PlaneMotor.Speed = m_MovementSpeed;
+            m_PlaneMotor.ComponentNormalizedSpeed = ComponentSpeed;
         }
 
         private void CheckExit() {
@@ -85,6 +115,8 @@ namespace Phezu.Derek {
             m_MovementSpeed -= m_LandedDecceleration * Time.deltaTime;
             if (m_MovementSpeed < 0.2f && !m_HasCrashed)
                 SceneLoader.Instance.LoadScene(m_SceneAfterLanding);
+            else if (m_MovementSpeed < 0.2f && m_HasCrashed)
+                SceneLoader.Instance.LoadScene(m_SceneAfterCrashing);
             else if (m_MovementSpeed < 0f)
                 m_MovementSpeed = 0f;
 

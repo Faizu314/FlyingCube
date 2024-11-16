@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Phezu.Derek {
 
+    [ExecuteAlways]
     public class PlaneMotor : MonoBehaviour {
 
+        [SerializeField] private Transform m_ForwardTransform;
         [SerializeField] private Transform m_TurnTransform;
         [SerializeField] private Transform m_PitchRollTransform;
 
         public float Speed;
+        public Vector3 ComponentNormalizedSpeed = Vector3.one;
 
         [Tooltip("This transforms the pitch roll transform.")]
         [Range(-1f, 1f)] public float Pitch;
@@ -32,7 +36,8 @@ namespace Phezu.Derek {
 
         private void Update() {
             UpdateOrientation();
-            MoveForward();
+            if (Application.isPlaying)
+                MoveForward();
         }
 
         private void UpdateOrientation() {
@@ -44,7 +49,13 @@ namespace Phezu.Derek {
         }
 
         private void MoveForward() {
-            m_Transform.Translate(Speed * Time.deltaTime * m_PitchRollTransform.forward);
+            Vector3 forward = new(
+                m_ForwardTransform.forward.x * ComponentNormalizedSpeed.x,
+                m_ForwardTransform.forward.y * ComponentNormalizedSpeed.y,
+                m_ForwardTransform.forward.z * ComponentNormalizedSpeed.z
+            );
+
+            m_Transform.Translate(Speed * Time.deltaTime * forward);
         }
     }
 }
