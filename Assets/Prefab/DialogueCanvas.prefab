@@ -584,6 +584,7 @@ MonoBehaviour:
   m_LeftCharacter: {fileID: 8822731208848803150}
   m_RightCharacter: {fileID: 2082351148910340849}
   m_DialoguePlayer: {fileID: 2726640149754495232}
+  m_SceneAfterDialogue: SampleScene
 --- !u!82 &1276812990
 AudioSource:
   m_ObjectHideFlags: 0

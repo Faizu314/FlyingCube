@@ -40,9 +40,9 @@ namespace Phezu.Derek {
                 m_FadeCo = StartCoroutine(nameof(FadeIn_Co));
         }
 
-        public void NextDialogue() {
+        public bool NextDialogue() {
             if (m_DialogueIndex >= m_DialogueData.Dialogues.Length - 1)
-                return;
+                return false;
 
             if (m_FadeCo == null) {
                 m_DialogueIndex++;
@@ -50,6 +50,8 @@ namespace Phezu.Derek {
             }
             else
                 SkipFade();
+
+            return true;
         }
 
         private void SkipFade() {

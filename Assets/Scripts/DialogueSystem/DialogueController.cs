@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Phezu.Util;
 
 namespace Phezu.Derek {
 
@@ -11,6 +12,9 @@ namespace Phezu.Derek {
         [SerializeField] private Image m_LeftCharacter;
         [SerializeField] private Image m_RightCharacter;
         [SerializeField] private DialoguePlayer m_DialoguePlayer;
+
+        [Header("Configs")]
+        [SerializeField][SceneField] private string m_SceneAfterDialogue;
 
         private DialogueData m_DialogueData;
 
@@ -29,7 +33,8 @@ namespace Phezu.Derek {
         }
 
         public void OnPointerDown(PointerEventData eventData) {
-            m_DialoguePlayer.NextDialogue();
+            if (!m_DialoguePlayer.NextDialogue())
+                SceneLoader.Instance.LoadScene(m_SceneAfterDialogue);
         }
     }
 }
