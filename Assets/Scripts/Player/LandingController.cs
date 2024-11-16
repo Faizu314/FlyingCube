@@ -72,11 +72,7 @@ namespace Phezu.Derek {
         private void ProcessInput() {
             Vector2 input = m_PlaneInput.InputCommand;
 
-            if (input.y < 0f)
-                m_TargetPitch = input.y;
-            else
-                m_TargetPitch = 0f;
-
+            m_TargetPitch = input.y;
             m_CurrPitch = Mathf.Lerp(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
 
             m_Animator.enabled = m_IsTurning = input.x != 0 && Mathf.Abs(m_CurrPitch) < 0.05f;

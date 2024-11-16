@@ -23,6 +23,8 @@ namespace Phezu.Derek {
                 m_InputCommand.x++;
             if (m_Input.GetHudButton(2))
                 m_InputCommand.y--;
+            if (m_Input.GetHudButton(3))
+                m_InputCommand.y++;
         }
     }
 }

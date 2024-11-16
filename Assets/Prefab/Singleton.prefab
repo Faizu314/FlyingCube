@@ -63,6 +63,7 @@ MonoBehaviour:
   - MoveLeft
   - MoveRight
   - MoveDown
+  - MoveUp
   m_DebugInputs: 
 --- !u!114 &8646076768993531743
 MonoBehaviour:
