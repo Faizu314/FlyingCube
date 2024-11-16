@@ -588,6 +588,7 @@ MonoBehaviour:
   m_TurnTransform: {fileID: 9180506856064353755}
   m_PitchRollTransform: {fileID: 3827105324479170032}
   Speed: 8
+  ComponentNormalizedSpeed: {x: 1, y: 1, z: 1}
   Pitch: 8.337519e-11
   Roll: 0.00000012579
   Turn: 0

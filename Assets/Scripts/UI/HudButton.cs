@@ -20,5 +20,9 @@ namespace Phezu.Derek.UI {
         public void OnPointerUp(PointerEventData eventData) {
             m_InputManager.SetHudButton(m_ButtonType, false);
         }
+
+        private void OnDestroy() {
+            m_InputManager.SetHudButton(m_ButtonType, false);
+        }
     }
 }

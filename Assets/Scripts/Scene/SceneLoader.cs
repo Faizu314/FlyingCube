@@ -1,4 +1,3 @@
-using UnityEngine;
 using Phezu.Util;
 using UnityEngine.SceneManagement;
 
