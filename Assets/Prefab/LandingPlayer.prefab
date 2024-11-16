@@ -277,12 +277,15 @@ MonoBehaviour:
   m_PlaneInput: {fileID: 4849339049227552933}
   m_PlaneMotor: {fileID: 8789350791196279457}
   m_PlaneBottom: {fileID: 3488516933707786129}
+  m_StartPosition: {x: 27.3, y: 12.68, z: -12.5}
+  m_TotalWidth: 200
   m_GroundY: 0.5
   m_MinLandingMotorPitch: -0.8
   m_PitchingSpeed: 3
   m_MovementSpeed: 8
   m_LandedDecceleration: 2
-  m_SceneAfterLanding: FlyingScene
+  m_SceneAfterLanding: DialogueScene
+  m_SceneAfterExiting: FlyingScene
   OnLanded:
     m_PersistentCalls:
       m_Calls:

@@ -14,12 +14,15 @@ namespace Phezu.Derek {
 
         [Space(5)]
         [Header("Configuration")]
+        [SerializeField] private Vector3 m_StartPosition;
+        [SerializeField] private float m_TotalWidth;
         [SerializeField] private float m_GroundY;
         [SerializeField] [Range(-1f, 0f)] private float m_MinLandingMotorPitch;
         [SerializeField] private float m_PitchingSpeed;
         [SerializeField] private float m_MovementSpeed;
         [SerializeField] private float m_LandedDecceleration;
-        [SerializeField][SceneField] private string m_SceneAfterLanding;
+        [SerializeField] [SceneField] private string m_SceneAfterLanding;
+        [SerializeField][SceneField] private string m_SceneAfterExiting;
 
         private float m_TargetPitch;
         private float m_CurrPitch;
@@ -27,12 +30,17 @@ namespace Phezu.Derek {
         private float m_HeightAtCollision;
         private bool m_IsLanding = false;
         private bool m_HasCrashed = false;
+        private bool m_HasExited = false;
 
         public UnityEvent OnLanded;
         public UnityEvent OnCrashed;
 
         private void Update() {
+            if (m_HasExited)
+                return;
+
             ApplyInput();
+            CheckExit();
 
             if (m_IsLanding) {
                 LandingTick();
@@ -60,6 +68,16 @@ namespace Phezu.Derek {
         private void ApplyInput() {
             m_PlaneMotor.Pitch = m_CurrPitch;
             m_PlaneMotor.Speed = m_MovementSpeed;
+        }
+
+        private void CheckExit() {
+            float sqrDistFromStart = 
+                Vector2.SqrMagnitude(new Vector2(transform.position.x, transform.position.z) - new Vector2(m_StartPosition.x, m_StartPosition.z));
+
+            if (sqrDistFromStart > m_TotalWidth * m_TotalWidth / 4f) {
+                SceneLoader.Instance.LoadScene(m_SceneAfterExiting);
+                m_HasExited = true;
+            }
         }
 
         private void LandingTick() {
