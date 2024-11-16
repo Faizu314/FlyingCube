@@ -10,7 +10,6 @@ namespace Phezu.Derek {
         [SerializeField] private Animator m_Animator;
         [SerializeField] private PlaneInput m_PlaneInput;
         [SerializeField] private PlaneMotor m_PlaneMotor;
-        [SerializeField] private LandingPlaneForward m_CustomForward;
         [Tooltip("Minimum Y value of the plane model. Will be compared with GroundY to check for collision.")]
         [SerializeField] private Transform m_PlaneBottom;
 
@@ -22,7 +21,6 @@ namespace Phezu.Derek {
         [SerializeField] [Range(-1f, 0f)] private float m_MinLandingMotorPitch;
         [SerializeField] private float m_PitchingSpeed;
         [SerializeField] private float m_MovementSpeed;
-        [SerializeField] [Range(0f, 1f)] private float m_UpWeightWhileTurning = 0.2f;
         [SerializeField] private float m_LandedDecceleration;
         [SerializeField] [SceneField] private string m_SceneAfterLanding;
         [SerializeField] [SceneField] private string m_SceneAfterCrashing;
@@ -68,7 +66,7 @@ namespace Phezu.Derek {
 
         public void OnTurnAnimationComplete() {
             m_IsTurning = false;
-            m_CustomForward.UpWeight = 1f;
+            m_CurrPitch = 0f;
         }
 
         private void ProcessInput() {
@@ -80,18 +78,17 @@ namespace Phezu.Derek {
                 m_TargetPitch = 0f;
 
             m_CurrPitch = Mathf.Lerp(m_CurrPitch, m_TargetPitch, Time.deltaTime * m_PitchingSpeed);
-            m_Animator.enabled = m_IsTurning = input.x != 0;
 
-            if (input.x < 0 && Mathf.Abs(m_PlaneMotor.Turn) % 360f < 1f) {
+            m_Animator.enabled = m_IsTurning = input.x != 0 && Mathf.Abs(m_CurrPitch) < 0.05f;
+
+            if (input.x < 0 && Mathf.Abs(m_PlaneMotor.Turn) % 360f < 1f && Mathf.Abs(m_CurrPitch) < 0.05f) {
                 m_Animator.Play("PlaneTurnLeft");
             }
-            else if (input.x > 0 && Mathf.Abs(m_PlaneMotor.Turn - 180f) % 360f < 1f) {
+            else if (input.x > 0 && Mathf.Abs(m_PlaneMotor.Turn - 180f) % 360f < 1f && Mathf.Abs(m_CurrPitch) < 0.05f) {
                 m_Animator.Play("PlaneTurnRight");
             }
             else
                 m_Animator.enabled = m_IsTurning = false;
-
-            m_CustomForward.UpWeight = m_IsTurning ? m_UpWeightWhileTurning : 1f;
         }
 
         private void ApplyInput() {

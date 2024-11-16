@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Animator: {fileID: 2209244263791732487}
   m_PlaneInput: {fileID: 4849339049227552933}
   m_PlaneMotor: {fileID: 8789350791196279457}
-  m_CustomForward: {fileID: 5799046668275603975}
   m_PlaneBottom: {fileID: 3488516933707786129}
   m_StartPosition: {x: 27.3, y: 12.68, z: -12.5}
   m_TotalWidth: 200
@@ -346,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665e446318acf56459ceeb8d655fc1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForwardTransform: {fileID: 195636688671816863}
+  m_ForwardTransform: {fileID: 2447550971293878788}
   m_TurnTransform: {fileID: 7749666882582809135}
   m_PitchRollTransform: {fileID: 2447550971293878788}
   Speed: 8
@@ -486,7 +485,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7749666882582809135}
-  - {fileID: 195636688671816863}
   m_Father: {fileID: 4672468946948852020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -787,52 +785,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!1 &5345819610546376676
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 195636688671816863}
-  - component: {fileID: 5799046668275603975}
-  m_Layer: 0
-  m_Name: CustomForward
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &195636688671816863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5345819610546376676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1856873777414563417}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5799046668275603975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5345819610546376676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3a9559f7910a243ba0c0d90b27f1c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PitchTransform: {fileID: 2447550971293878788}
-  UpWeight: 1
 --- !u!1 &5670844862501911638
 GameObject:
   m_ObjectHideFlags: 0
