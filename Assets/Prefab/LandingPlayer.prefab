@@ -282,6 +282,7 @@ MonoBehaviour:
   m_PitchingSpeed: 3
   m_MovementSpeed: 8
   m_LandedDecceleration: 2
+  m_SceneAfterLanding: FlyingScene
   OnLanded:
     m_PersistentCalls:
       m_Calls:

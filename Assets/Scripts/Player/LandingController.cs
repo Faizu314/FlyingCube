@@ -1,3 +1,4 @@
+using Phezu.Util;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,7 @@ namespace Phezu.Derek {
 
     public class LandingController : MonoBehaviour {
 
+        [Header("References")]
         [SerializeField] private PlaneInput m_PlaneInput;
         [SerializeField] private PlaneMotor m_PlaneMotor;
         [Tooltip("Minimum Y value of the plane model. Will be compared with GroundY to check for collision.")]
@@ -17,6 +19,7 @@ namespace Phezu.Derek {
         [SerializeField] private float m_PitchingSpeed;
         [SerializeField] private float m_MovementSpeed;
         [SerializeField] private float m_LandedDecceleration;
+        [SerializeField][SceneField] private string m_SceneAfterLanding;
 
         private float m_TargetPitch;
         private float m_CurrPitch;
@@ -60,9 +63,11 @@ namespace Phezu.Derek {
         }
 
         private void LandingTick() {
-            m_CurrPitch = EasingFunction.EaseInSine(m_CurrPitch, 0f, Time.deltaTime * m_PitchingSpeed);
+            m_CurrPitch = Mathf.Lerp(m_CurrPitch, 0f, Time.deltaTime * m_PitchingSpeed);
             m_MovementSpeed -= m_LandedDecceleration * Time.deltaTime;
-            if (m_MovementSpeed < 0f)
+            if (m_MovementSpeed < 0.2f && !m_HasCrashed)
+                SceneLoader.Instance.LoadScene(m_SceneAfterLanding);
+            else if (m_MovementSpeed < 0f)
                 m_MovementSpeed = 0f;
 
             var pos = m_PlaneMotor.transform.position;
@@ -72,6 +77,7 @@ namespace Phezu.Derek {
 
         private void OnGroundHit() {
             if (m_CurrPitch <= m_MinLandingMotorPitch) {
+                m_HasCrashed = true;
                 OnCrashed?.Invoke();
             }
             else {
